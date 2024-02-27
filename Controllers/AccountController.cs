@@ -83,6 +83,7 @@ namespace Undisclosed_Shop.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+
             }
 
             // This doesn't count login failures towards account lockout
@@ -92,7 +93,8 @@ namespace Undisclosed_Shop.Controllers
             if (result != null)
             {
                 await SignInAsync(result, model.RememberMe);
-                return returnUrl == null ? RedirectToLocal($@"Index/Home") : RedirectToLocal(returnUrl);
+                //return returnUrl == $@"Index/Products" ? RedirectToLocal($@"Index/Home") : RedirectToLocal(returnUrl);
+                return RedirectToAction("Index", "Products");
             }
             else
             {
@@ -197,7 +199,7 @@ namespace Undisclosed_Shop.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Products");
+                    return RedirectToAction("Login", "Account");
                 }
                 AddErrors(result);
 

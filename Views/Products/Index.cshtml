@@ -1,80 +1,75 @@
 ﻿@model IEnumerable<Undisclosed_Shop.Models.Products>
 
 @{
-    Layout = null;
-
+    ViewBag.Title = "Products";
 }
 
-<!DOCTYPE html>
-<h2 style="margin-left: 5px">Product List</h2>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>List of Products</title>
+<h2>Products</h2>
 
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+<p>
+    @Html.ActionLink("Add Product+", "Create")
+</p>
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-<body>
+<!-- Add a form for the search box -->
+@using (Html.BeginForm("Index", "Products", FormMethod.Get))
+{
     <p>
-        <div type="button" class="btn header-item" style="margin-top: 9px">
-            @Html.ActionLink("Create New", "Create", "Products", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn header-item" })
-        </div>
-
-        <div type="button" class="btn header-item" style="margin-top: 9px">
-            @Html.ActionLink("Manage", "SetPassword", "Manage", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn header-item" })
-        </div>
+        Find by name or category: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
     </p>
+}
 
-    <table class="table">
+<table class="table">
+    <tr>
+        <!-- Add links for the column headings to sort by that column -->
+        <th>
+            @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Product Stock", "Index", new { sortOrder = ViewBag.StockSortParm, searchString = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Product Price", "Index", new { sortOrder = ViewBag.PriceSortParm, searchString = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Product Category", "Index", new { sortOrder = ViewBag.CategorySortParm, searchString = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayName("Product Description")
+        </th>
+        <th>
+            @Html.DisplayName("Product Image")
+        </th>
+        <th></th>
+    </tr>
+
+    <!-- Display the products in a table -->
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                <img src="@Url.Content("~/ProductImages/" + item.ProductImage)" alt="Product Image" style="width:100px; height:100px;" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductStock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductPrice)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                </td>
-            </tr>
-        }
-
-    </table>
-</body>
-</html>
+    }
+</table>

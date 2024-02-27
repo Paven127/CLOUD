@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,10 +18,54 @@ namespace Undisclosed_Shop.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        // GET: Products
+        public ActionResult Index(string searchString, string sortOrder)
         {
-            return View(db.Products.ToList());
+            // Store the current sort order and search string in ViewBag
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.CategorySortParm = sortOrder == "Category" ? "category_desc" : "Category";
+
+            // Get all products from the database
+            var products = from p in db.Products
+                           select p;
+
+            // Apply the search filter if any
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.ProductName.Contains(searchString)
+                                            || p.ProductDescription.Contains(searchString)
+                                            || p.ProductCategory.Contains(searchString));
+            }
+
+            // Apply the sort order if any
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    products = products.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    products = products.OrderBy(p => p.ProductPrice);
+                    break;
+                case "price_desc":
+                    products = products.OrderByDescending(p => p.ProductPrice);
+                    break;
+                case "Category":
+                    products = products.OrderBy(p => p.ProductCategory);
+                    break;
+                case "category_desc":
+                    products = products.OrderByDescending(p => p.ProductCategory);
+                    break;
+                default:
+                    products = products.OrderBy(p => p.ProductName);
+                    break;
+            }
+
+            // Return the view with the filtered and sorted products
+            return View(products.ToList());
         }
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -42,14 +89,21 @@ namespace Undisclosed_Shop.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductStock,ProductPrice")] Products products)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductStock,ProductPrice,ProductDescription,ProductCategory")] Products products, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null && image.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    var path = Path.Combine(Server.MapPath("~/ProductImages/"), fileName);
+                    image.SaveAs(path);
+
+                    products.ProductImage = fileName;
+                }
+
                 db.Products.Add(products);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -74,14 +128,21 @@ namespace Undisclosed_Shop.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductStock,ProductPrice")] Products products)
+        public ActionResult Edit(int id, [Bind(Include = "ProductId,ProductName,ProductStock,ProductPrice,ProductDescription,ProductCategory")] Products products, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null && image.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    var path = Path.Combine(Server.MapPath("~/ProductImages/"), fileName);
+                    image.SaveAs(path);
+
+                    products.ProductImage = fileName;
+                }
+
                 db.Entry(products).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,5 +184,8 @@ namespace Undisclosed_Shop.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
     }
 }

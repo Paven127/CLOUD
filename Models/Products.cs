@@ -21,5 +21,13 @@ namespace Undisclosed_Shop.Models
         [Required]
         public double ProductPrice { get; set; }
 
+        [Required]
+        public string ProductDescription { get; set; }
+
+        [Required]
+        public string ProductCategory { get; set; }
+
+        public string ProductImage { get; set; }
+
     }
 }

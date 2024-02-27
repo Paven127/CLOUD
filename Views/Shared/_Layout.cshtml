@@ -44,7 +44,7 @@
     <div id="layout-wrapper">
 
 
-        <header id="page-topbar">
+        <header id="page-topbar" style="background-color:blueviolet">
             <div class="navbar-header">
                 <div class="d-flex">
                     <!-- LOGO -->
@@ -78,12 +78,6 @@
                     </li>*@
 
 
-                    <div type="button" class="btn header-item" style="margin-top: 9px; right: 0px">
-                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn header-item" })
-                    </div>
-                    <div type="button" class="btn header-item" style="margin-top: 9px">
-                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn header-itemk" })
-                        </div>
 
                     <button type="button" class="btn header-item" style="margin-top: 9px">
                             @Html.ActionLink("products", "Index", "Products", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
