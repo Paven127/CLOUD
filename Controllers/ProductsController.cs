@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Undisclosed_Shop.Models;
 
 namespace Undisclosed_Shop.Controllers
@@ -65,7 +68,50 @@ namespace Undisclosed_Shop.Controllers
             // Return the view with the filtered and sorted products
             return View(products.ToList());
         }
+        public ActionResult UserProducts(string sortOrder, string currentFilter, string searchString, int? page) 
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var items = from i in db.Products
+                        select i;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.ProductCategory.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(s => s.ProductName);
+                    break;
+                case "Price":
+                    items = items.OrderBy(s => s.ProductPrice);
+                    break;
+                case "price_desc":
+                    items = items.OrderByDescending(s => s.ProductPrice);
+                    break;
+                default:  // Sort By Name ASC
+                    items = items.OrderBy(s => s.ProductName);
+                    break;
+            }
+
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(items.ToPagedList(pageNumber, pageSize));
+        }
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)

@@ -3,7 +3,7 @@
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-
+<a href="~/Views/Shared/_LayoutLogin.cshtml"></a>
 <h2 style="color:black">@ViewBag.Title.</h2>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -50,8 +50,8 @@
 </style>
 
 <body style="font-size:125%;padding-left:20px">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
+
+    
         @Html.AntiForgeryToken()
         <h4>Create a new account.</h4>
         <hr />
@@ -125,7 +125,7 @@
         <p class="btn btn-lg btn-circle btn-outline-new-white">
             @Html.ActionLink("Already have an account", "Login")
         </p>
-    }
+    
 </body>
 
 @section Scripts {

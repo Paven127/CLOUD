@@ -94,7 +94,7 @@ namespace Undisclosed_Shop.Controllers
             {
                 await SignInAsync(result, model.RememberMe);
                 //return returnUrl == $@"Index/Products" ? RedirectToLocal($@"Index/Home") : RedirectToLocal(returnUrl);
-                return RedirectToAction("Index", "Products");
+                return RedirectToAction("UserProducts", "Products");
             }
             else
             {

@@ -53,6 +53,12 @@
       <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Select.HtmlToPdf, Version=23.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
       <HintPath>packages\Select.HtmlToPdf.23.2.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
     </Reference>
@@ -219,12 +225,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\Evetech.jpeg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themeassets\css\app.css" />
     <Content Include="Content\themeassets\css\app.min.css" />
     <Content Include="Content\themeassets\css\bootstrap.css" />
     <Content Include="Content\themeassets\css\bootstrap.min.css" />
     <Content Include="Content\themeassets\css\icons.css" />
     <Content Include="Content\themeassets\css\icons.min.css" />
+    <Content Include="Content\themeassets\css\UserProduct.css" />
     <Content Include="Content\themeassets\fonts\boxicons.svg" />
     <Content Include="Content\themeassets\fonts\dripicons-v2.svg" />
     <Content Include="Content\themeassets\fonts\fa-brands-400.svg" />
@@ -354,6 +362,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Products\UserProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
