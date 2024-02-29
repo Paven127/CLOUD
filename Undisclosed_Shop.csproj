@@ -196,6 +196,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\Solomon.cs" />
+    <Compile Include="Controllers\Solomon2.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -363,6 +365,16 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Products\UserProducts.cshtml" />
+    <Content Include="Views\Solomon\Create.cshtml" />
+    <Content Include="Views\Solomon\Delete.cshtml" />
+    <Content Include="Views\Solomon\Details.cshtml" />
+    <Content Include="Views\Solomon\Edit.cshtml" />
+    <Content Include="Views\Solomon\Index.cshtml" />
+    <Content Include="Views\Solomon2\Create.cshtml" />
+    <Content Include="Views\Solomon2\Delete.cshtml" />
+    <Content Include="Views\Solomon2\Details.cshtml" />
+    <Content Include="Views\Solomon2\Edit.cshtml" />
+    <Content Include="Views\Solomon2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
