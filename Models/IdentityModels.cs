@@ -50,5 +50,13 @@ namespace Undisclosed_Shop.Models
         }
 
         public System.Data.Entity.DbSet<Undisclosed_Shop.Models.Products> Products { get; set; }
+
+        public System.Data.Entity.DbSet<Undisclosed_Shop.Models.Cart> Carts { get; set; }
+
+        public System.Data.Entity.DbSet<Undisclosed_Shop.Models.SaleDetail> SaleDetails { get; set; }
+
+        public System.Data.Entity.DbSet<Undisclosed_Shop.Models.Sale> Sales { get; set; }
+
+
     }
 }

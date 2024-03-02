@@ -32,6 +32,9 @@
         li {
             margin-top: 15px;
         }
+        .a_exception {
+            color: #ffffff !important;
+        }
     </style>
 
 </head>
@@ -44,7 +47,7 @@
     <div id="layout-wrapper">
 
 
-        <header id="page-topbar" style="background-color:blueviolet">
+        <header id="page-topbar" style="background-color: blueviolet; align: " right">
             <div class="navbar-header">
                 <div class="d-flex">
                     <!-- LOGO -->
@@ -69,105 +72,109 @@
                     </div>
 
                     @*<button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
-                        <i class="fa fa-fw fa-bars"></i>
-                    </button>*@
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>*@
 
                     @*<li class="metismenu list-unstyled" id="side-menu">
-                        <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" />
 
-                    </li>*@
+                </li>*@
 
 
 
-                    @*<button type="button" class="btn header-item" style="margin-top: 9px">
-                        @Html.ActionLink("products", "Index", "Products", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
-                    </button>*@
+                    <button type="button" class="btn header-item" style="margin-top: 9px ">
+                        @Html.ActionLink("Manage Account", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
+                    </button>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active nav-link" style="color:azure; height:32px "><a class="nav-link ">@{Html.RenderAction("CartSummary", "ShoppingCart", new { @class = "a_exception" });}</a></li>
+                    </ul>
 
 
                     @*<div class="dropdown d-none d-lg-block ms-2">
-                        <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                            <span>Components</span>
-                            <i class="mdi mdi-chevron-down"></i>
-                        </button>
+                    <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                        <span>Components</span>
+                        <i class="mdi mdi-chevron-down"></i>
+                    </button>
 
 
-                        <div class="dropdown-menu dropdown-menu-xl p-2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a class="dropdown-item" href="#!">Alerts</a>
-                                    <a class="dropdown-item" href="#!">Buttons</a>
-                                    <a class="dropdown-item" href="#!">Cards</a>
-                                    <a class="dropdown-item" href="#!">Dropdowns</a>
-                                    <a class="dropdown-item" href="#!">Lightbox</a>
-                                    <a class="dropdown-item" href="#!">Modals</a>
-                                    <a class="dropdown-item" href="#!">Range Slider</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a class="dropdown-item" href="#!">Progress Bars</a>
-                                    <a class="dropdown-item" href="#!">Sweet-Alert</a>
-                                    <a class="dropdown-item" href="#!">Tabs & Accordions</a>
-                                    <a class="dropdown-item" href="#!">Typography</a>
-                                    <a class="dropdown-item" href="#!">General</a>
-                                    <a class="dropdown-item" href="#!">Rating</a>
-                                    <a class="dropdown-item" href="#!">Notifications</a>
-                                </div>
+                    <div class="dropdown-menu dropdown-menu-xl p-2">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="dropdown-item" href="#!">Alerts</a>
+                                <a class="dropdown-item" href="#!">Buttons</a>
+                                <a class="dropdown-item" href="#!">Cards</a>
+                                <a class="dropdown-item" href="#!">Dropdowns</a>
+                                <a class="dropdown-item" href="#!">Lightbox</a>
+                                <a class="dropdown-item" href="#!">Modals</a>
+                                <a class="dropdown-item" href="#!">Range Slider</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="dropdown-item" href="#!">Progress Bars</a>
+                                <a class="dropdown-item" href="#!">Sweet-Alert</a>
+                                <a class="dropdown-item" href="#!">Tabs & Accordions</a>
+                                <a class="dropdown-item" href="#!">Typography</a>
+                                <a class="dropdown-item" href="#!">General</a>
+                                <a class="dropdown-item" href="#!">Rating</a>
+                                <a class="dropdown-item" href="#!">Notifications</a>
                             </div>
                         </div>
-                    </div>*@
+                    </div>
+                </div>*@
 
                     @*<div class="dropdown dropdown-mega d-none d-lg-block">
-                        <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                            <span>Categories</span>
-                            <i class="mdi mdi-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-menu p-2 dropdown-megamenu">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="font-size-14 mx-4 mt-2">Computers & Accessories</h5>
-                                    <a class="dropdown-item" href="#!">Laptops &amp; Tablets</a>
-                                    <a class="dropdown-item" href="#!">Desktop Computers</a>
-                                    <a class="dropdown-item" href="#!">Networking Products (NAS)</a>
-                                    <a class="dropdown-item" href="#!">Monitors</a>
-                                    <a class="dropdown-item" href="#!">Bags, Cases &amp; Sleeves</a>
-                                    <a class="dropdown-item" href="#!">Batteries</a>
-                                    <a class="dropdown-item" href="#!">Charges &amp; Adapters</a>
-                                </div>
-                                <div class="col">
-                                    <h5 class="font-size-14 ms-4 mt-2">Smartphones & Tablets</h5>
-                                    <a class="dropdown-item" href="#!">Apple iPhone</a>
-                                    <a class="dropdown-item" href="#!">Android Smartphones</a>
-                                    <a class="dropdown-item" href="#!">Phablets</a>
-                                    <a class="dropdown-item" href="#!">Apple iPad</a>
-                                    <a class="dropdown-item" href="#!">Android Tablets</a>
-                                    <a class="dropdown-item" href="#!">Tablets with Keyboard</a>
-                                </div>
-                                <div class="col">
-                                    <h5 class="font-size-14 ms-4 mt-2">Television & Video</h5>
-                                    <a class="dropdown-item" href="#!">TV Sets</a>
-                                    <a class="dropdown-item" href="#!">Home Theater Systems</a>
-                                    <a class="dropdown-item" href="#!">DVD Players & Recorders</a>
-                                    <a class="dropdown-item" href="#!">DVD-VCR Combos</a>
-                                    <a class="dropdown-item" href="#!">Projectors</a>
-                                    <a class="dropdown-item" href="#!">Projection Screens</a>
-                                    <a class="dropdown-item" href="#!">Satelite Television</a>
-                                </div>
-                                <div class="col">
-                                    <h5 class="font-size-14 ms-4 mt-2">Cameras, Photo & Video</h5>
-                                    <a class="dropdown-item" href="#!">Point & Shoot Digital Cameras</a>
-                                    <a class="dropdown-item" href="#!">DSLR Cameras</a>
-                                    <a class="dropdown-item" href="#!">Mirrorless Cameras</a>
-                                    <a class="dropdown-item" href="#!">Body Mounted Cameras</a>
-                                    <a class="dropdown-item" href="#!">Camera Lenses</a>
-                                    <a class="dropdown-item" href="#!">Video Studio</a>
-                                </div>
-                                <div class="col">
-                                    <div class="py-lg-2 pr-lg-2">
-                                        <img src="assets/images/illustrator/1.png" alt="" class="img-fluid mx-auto" style="max-height: 250px;">
-                                    </div>
+                    <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                        <span>Categories</span>
+                        <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu p-2 dropdown-megamenu">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="font-size-14 mx-4 mt-2">Computers & Accessories</h5>
+                                <a class="dropdown-item" href="#!">Laptops &amp; Tablets</a>
+                                <a class="dropdown-item" href="#!">Desktop Computers</a>
+                                <a class="dropdown-item" href="#!">Networking Products (NAS)</a>
+                                <a class="dropdown-item" href="#!">Monitors</a>
+                                <a class="dropdown-item" href="#!">Bags, Cases &amp; Sleeves</a>
+                                <a class="dropdown-item" href="#!">Batteries</a>
+                                <a class="dropdown-item" href="#!">Charges &amp; Adapters</a>
+                            </div>
+                            <div class="col">
+                                <h5 class="font-size-14 ms-4 mt-2">Smartphones & Tablets</h5>
+                                <a class="dropdown-item" href="#!">Apple iPhone</a>
+                                <a class="dropdown-item" href="#!">Android Smartphones</a>
+                                <a class="dropdown-item" href="#!">Phablets</a>
+                                <a class="dropdown-item" href="#!">Apple iPad</a>
+                                <a class="dropdown-item" href="#!">Android Tablets</a>
+                                <a class="dropdown-item" href="#!">Tablets with Keyboard</a>
+                            </div>
+                            <div class="col">
+                                <h5 class="font-size-14 ms-4 mt-2">Television & Video</h5>
+                                <a class="dropdown-item" href="#!">TV Sets</a>
+                                <a class="dropdown-item" href="#!">Home Theater Systems</a>
+                                <a class="dropdown-item" href="#!">DVD Players & Recorders</a>
+                                <a class="dropdown-item" href="#!">DVD-VCR Combos</a>
+                                <a class="dropdown-item" href="#!">Projectors</a>
+                                <a class="dropdown-item" href="#!">Projection Screens</a>
+                                <a class="dropdown-item" href="#!">Satelite Television</a>
+                            </div>
+                            <div class="col">
+                                <h5 class="font-size-14 ms-4 mt-2">Cameras, Photo & Video</h5>
+                                <a class="dropdown-item" href="#!">Point & Shoot Digital Cameras</a>
+                                <a class="dropdown-item" href="#!">DSLR Cameras</a>
+                                <a class="dropdown-item" href="#!">Mirrorless Cameras</a>
+                                <a class="dropdown-item" href="#!">Body Mounted Cameras</a>
+                                <a class="dropdown-item" href="#!">Camera Lenses</a>
+                                <a class="dropdown-item" href="#!">Video Studio</a>
+                            </div>
+                            <div class="col">
+                                <div class="py-lg-2 pr-lg-2">
+                                    <img src="assets/images/illustrator/1.png" alt="" class="img-fluid mx-auto" style="max-height: 250px;">
                                 </div>
                             </div>
                         </div>
-                    </div>*@
+                    </div>
+                </div>*@
 
 
 
@@ -192,37 +199,33 @@
                     </div>
 
                     <!--<div class="dropdown d-inline-block language-switch">
-                        <button type="button" class="btn header-item"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">-->
-
-                            <!-- item-->
-                            <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
-                                <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                            </a>-->
-                            <!-- item-->
-                            <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                            </a>-->
-
-                            <!-- item-->
-                            <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                            </a>-->
-
-                            <!-- item-->
-                            <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                            </a>-->
-
-                            <!-- item-->
-                            <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                            </a>
-                        </div>
-                    </div>-->
+                <button type="button" class="btn header-item"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">-->
+                    <!-- item-->
+                    <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
+                <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+            </a>-->
+                    <!-- item-->
+                    <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+            </a>-->
+                    <!-- item-->
+                    <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+            </a>-->
+                    <!-- item-->
+                    <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+            </a>-->
+                    <!-- item-->
+                    <!--<a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                    </a>
+                </div>
+            </div>-->
 
                     <div class="dropdown d-none d-lg-inline-block">
                         <button type="button" class="btn header-item noti-icon"
@@ -420,9 +423,9 @@
                             <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
                                  alt="Header Avatar">
                             @*<span class="ms-2 d-none d-sm-block user-item-desc">
-                                <span class="user-name">Kate Dudley</span>
-                                <span class="user-sub-title">Administrator</span>
-                            </span>*@
+                            <span class="user-name">Kate Dudley</span>
+                            <span class="user-sub-title">Administrator</span>
+                        </span>*@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
                             <div class="p-3 bg-primary border-bottom">
@@ -465,7 +468,7 @@
 
         </div>
         <!-- end main content-->
-        <footer class="footer" style="position:fixed">
+        <footer class="footer" style="position: fixed">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">

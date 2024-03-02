@@ -29,5 +29,6 @@ namespace Undisclosed_Shop.Models
 
         public string ProductImage { get; set; }
 
+
     }
 }
