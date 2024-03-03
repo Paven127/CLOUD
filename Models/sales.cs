@@ -9,7 +9,6 @@ namespace Undisclosed_Shop.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public int SaleId { get; set; }
         public string SaleDate { get; set; }
 
@@ -41,10 +40,31 @@ namespace Undisclosed_Shop.Models
 
         [NotMapped]
 
-        public List<SaleDetail> SaleDetails { get; set; }
+       public List<SaleDetail> SaleDetails { get; set; }
 
+
+
+
+        public int? PaymentMethodId { get; set; }
+        [ForeignKey("PaymentMethodId")]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        public bool? Paid { get; set; }
+
+        public Guid TranscationId
+        {
+            get
+            {
+                return System.Guid.NewGuid();
+            }
+        }
+
+        public bool? Dispatched { get; set; }
+        public bool? ConfirmOrder { get; set; }
+        public bool? ConfirmDelivery { get; set; }
+
+        //Mobile App OrderStatus
         public string OrderStatus { get; set; }
-
 
     }
 }

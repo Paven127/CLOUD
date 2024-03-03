@@ -14,6 +14,8 @@ namespace Undisclosed_Shop.Models
         public double ProductPrice { get; set; }
         [ForeignKey("ProductId")]
         public virtual Products Products { get; set; }
+
+        [ForeignKey("SaleId")]
         public virtual Sale Sale { get; set; }
     }
 }

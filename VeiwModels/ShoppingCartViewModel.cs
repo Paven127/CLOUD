@@ -18,7 +18,7 @@ namespace Undisclosed_Shop.VeiwModels
         }
         public int? PaymentMethodId { get; set; }
 
-       // public BankingDetails bankingDetails { get; set; }
+        public BankingDetails bankingDetails { get; set; }
 
         public int? BankingInfo { get; set; }
 

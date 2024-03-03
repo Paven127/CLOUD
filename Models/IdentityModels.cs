@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BookStore.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -17,6 +19,7 @@ namespace Undisclosed_Shop.Models
         public string Country { get; set; }
         public string PhoneNo { get; set; }
         public string IdNumber { get; set; }
+        public virtual List<SaleDetail> SaleDetails { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -57,6 +60,10 @@ namespace Undisclosed_Shop.Models
 
         public System.Data.Entity.DbSet<Undisclosed_Shop.Models.Sale> Sales { get; set; }
 
-
+        public System.Data.Entity.DbSet<Undisclosed_Shop.Models.PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<BankingDetails> BankingDetails { get; set; }
+        public DbSet<BankInfo> BankInfos { get; set; }
+        public DbSet<OnlineSalesOrCODInfo> OnlineSalesInfos { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
     }
 }

@@ -52,12 +52,18 @@
     <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Select.HtmlToPdf, Version=23.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
       <HintPath>packages\Select.HtmlToPdf.23.2.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
@@ -72,8 +78,33 @@
       <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.24.2.7\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -193,8 +224,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BankInfoesControllerController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SaleDetailsController.cs" />
     <Compile Include="Controllers\ShopingCartController.cs" />
@@ -202,6 +236,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Delivery.cs" />
+    <Compile Include="Models\OnlineSalesOrCODInfo.cs" />
+    <Compile Include="Models\BankInfo.cs" />
+    <Compile Include="Models\BankingDetails.cs" />
+    <Compile Include="Models\Keys.cs" />
+    <Compile Include="Models\InfoHelper.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Models\SaleDetails.cs" />
     <Compile Include="Models\sales.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -240,6 +281,8 @@
     <Content Include="Content\themeassets\css\bootstrap.min.css" />
     <Content Include="Content\themeassets\css\icons.css" />
     <Content Include="Content\themeassets\css\icons.min.css" />
+    <Content Include="Content\themeassets\css\Failure.css" />
+    <Content Include="Content\themeassets\css\StyleSheet1.css" />
     <Content Include="Content\themeassets\css\UserProduct.css" />
     <Content Include="Content\themeassets\fonts\boxicons.svg" />
     <Content Include="Content\themeassets\fonts\dripicons-v2.svg" />
@@ -319,6 +362,7 @@
     <Content Include="Content\themeassets\fonts\summernote.ttf" />
     <Content Include="Content\themeassets\fonts\summernote.woff" />
     <Content Include="Content\themeassets\images\demo\desktop.ini" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -394,11 +438,20 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\ShoppingCart\DetailsCon.cshtml" />
+    <Content Include="Views\PaymentMethods\Create.cshtml" />
+    <Content Include="Views\PaymentMethods\Delete.cshtml" />
+    <Content Include="Views\PaymentMethods\Details.cshtml" />
+    <Content Include="Views\PaymentMethods\Edit.cshtml" />
+    <Content Include="Views\PaymentMethods\Index.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
+    <Content Include="Views\Checkout\Success.cshtml" />
+    <Content Include="Views\Checkout\Faild.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="ProductImages\" />
+    <Folder Include="Views\BankInfoesController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
