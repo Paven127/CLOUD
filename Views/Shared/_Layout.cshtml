@@ -81,17 +81,23 @@
         </li>*@
 
 
-                    <button type="button" class="btn header-item" style="margin-top: 9px ">
-                        @Html.ActionLink("Manage Account", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
-                    </button>
 
                     <button type="button" class="btn header-item" style="margin-top: 9px ">
                         @Html.ActionLink("Veiw Products", "UserProducts", "Products", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
                     </button>
 
                     <button type="button" class="btn header-item" style="margin-top: 9px ">
+                        @Html.ActionLink("Manage Account", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "ProductsLink", @class = "btn header-item" })
+                    </button>
+
+                    <button type="button" class="btn header-item" style="margin-top: 9px ">
+                        @Html.ActionLink("Veiw Order History", "Index", "SaleDetails", routeValues: null, htmlAttributes: new { id = "OrderHistory", @class = "btn header-item" })
+                    </button>
+
+                    <button type="button" class="btn header-item" style="margin-top: 9px ">
                         <a class="button ">@{Html.RenderAction("CartSummary", "ShoppingCart", new { @class = "a_exception" });}</a>
                     </button>
+
 
 
                     @*<div class="dropdown d-none d-lg-block ms-2">
@@ -521,6 +527,7 @@
     <script src="~/Content/themeassets/js/app.js"></script>
 
     <script>
+        debugger
         document.addEventListener('DOMContentLoaded', function () {
             var footer = document.getElementById('footer');
             positionFooter();

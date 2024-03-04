@@ -1,21 +1,41 @@
 ﻿@model IEnumerable<Undisclosed_Shop.Models.SaleDetail>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+    #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+    }
+
+    #customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+    }
+    </style>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+    <table id="customers">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Products.ProductName)
@@ -29,31 +49,26 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductPrice)
             </th>
-            <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Products.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sale.SaleDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.SaleDetailId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.SaleDetailId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.SaleDetailId })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Products.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sale.SaleDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>

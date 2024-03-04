@@ -203,7 +203,6 @@ namespace Undisclosed_Shop.Controllers
                 }
                 AddErrors(result);
 
-                string SName = model.Name.ToString();
 
 
                 PdfDocument document = new PdfDocument();

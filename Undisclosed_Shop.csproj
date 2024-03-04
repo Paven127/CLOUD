@@ -451,7 +451,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="ProductImages\" />
-    <Folder Include="Views\BankInfoesController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

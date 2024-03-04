@@ -50,8 +50,9 @@
 </style>
 
 <body style="font-size:125%;padding-left:20px">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
 
-    
         @Html.AntiForgeryToken()
         <h4>Create a new account.</h4>
         <hr />
@@ -117,53 +118,64 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input style="border:none;color:black;cursor:pointer" type="submit" class="AddLinkTab" value="Register" />
+                <div class="col-md-offset-2 col-md-10">
+                    <input style="border:none;color:black;cursor:pointer" type="submit" class="AddLinkTab" value="Register" />
+                </div>
             </div>
-        </div>
+
+
+        }
 
         <p class="btn btn-lg btn-circle btn-outline-new-white">
             @Html.ActionLink("Already have an account", "Login")
         </p>
-    
-</body>
+
+
+
+        <p class="btn btn-lg btn-circle btn-outline-new-white">
+            @Html.ActionLink("Already have an account", "Login")
+        </p>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmVZBqrUwujwLYjips81ipviQDB1NKyP0&libraries=places"></script>
+        <script type="text/javascript">
+            debugger
+            google.maps.event.addDomListener(window, 'load', function () {
+                var places = new google.maps.places.Autocomplete(document.getElementById('Address'));
+                google.maps.event.addListener(places, 'place_changed', function () {
+
+
+                    var place = places.getPlace();
+                    document.getElementById('Address').value = place.formatted_address;
+
+
+                    var componentForm = {
+                        street_number: 'short_name',
+                        route: 'long_name',
+                        locality: 'long_name',
+                        administrative_area_level_1: 'short_name',
+                        country: 'long_name',
+                        postal_code: 'short_name'
+                    };
+
+                    var addressObj = {}
+
+                    for (var i = 0; i < place.address_components.length; i++) {
+                        var addressType = place.address_components[i].types[0];
+                        if (componentForm[addressType]) {
+                            addressObj[addressType] = place.address_components[i][componentForm[addressType]]
+                        }
+                    }
+
+                    document.getElementById('City').value = addressObj.locality;
+                    document.getElementById('State').value = addressObj.administrative_area_level_1;
+                    document.getElementById('PostalCode').value = addressObj.postal_code;
+                    document.getElementById('Country').value = addressObj.country;
+
+                });
+            });</script>
+
+    </body>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmVZBqrUwujwLYjips81ipviQDB1NKyP0&libraries=places"></script>
-    <script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('Address'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-
-
-                var place = places.getPlace();
-                document.getElementById('Address').value = place.formatted_address;
-
-
-                var componentForm = {
-                    street_number: 'short_name',
-                    route: 'long_name',
-                    locality: 'long_name',
-                    administrative_area_level_1: 'short_name',
-                    country: 'long_name',
-                    postal_code: 'short_name'
-                };
-
-                var addressObj = {}
-
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var addressType = place.address_components[i].types[0];
-                    if (componentForm[addressType]) {
-                        addressObj[addressType] = place.address_components[i][componentForm[addressType]]
-                    }
-                }
-
-                document.getElementById('City').value = addressObj.locality;
-                document.getElementById('State').value = addressObj.administrative_area_level_1;
-                document.getElementById('PostalCode').value = addressObj.postal_code;
-                document.getElementById('Country').value = addressObj.country;
-
-            });
-        });</script>
 }
